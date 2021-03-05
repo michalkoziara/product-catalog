@@ -5,10 +5,13 @@ import java.util.*;
 public class Printer {
 
     void printManufacturerStatistics(List<Computer> computers) {
-        Map<String, Integer> numberOfComputersByManufacturer = new TreeMap<>();
-        int manufacturerNameSize = 0;
-        int numberOfComputersSize = 0;
+        final String manufacturerLabel = "Nazwa producenta";
+        final String numberOfComputersLabel = "Liczba komputerów";
 
+        int manufacturerNameSize = manufacturerLabel.length();
+        int numberOfComputersSize = numberOfComputersLabel.length();
+
+        Map<String, Integer> numberOfComputersByManufacturer = new TreeMap<>();
         for (Computer computer : computers) {
             String manufacturerName = computer.getManufacturerName();
             if (!numberOfComputersByManufacturer.containsKey(manufacturerName)) {
@@ -33,15 +36,23 @@ public class Printer {
         System.out.println("Liczba komputerów poszczególnych producentów:");
 
         printRowLine(rowSize);
-        for (Map.Entry<String, Integer> entry : numberOfComputersByManufacturer.entrySet()) {
-            System.out.print("| ");
-            System.out.print(addPadding(entry.getKey(), calculatedManufacturerNameSize));
-            System.out.print(" | ");
-            System.out.print(addPadding(entry.getValue().toString(), numberOfComputersSize));
-            System.out.print(" |");
-            System.out.println();
-        }
+        System.out.print("│ ");
+        System.out.print(addPadding(manufacturerLabel, calculatedManufacturerNameSize));
+        System.out.print(" │ ");
+        System.out.print(addPadding(numberOfComputersLabel, numberOfComputersSize));
+        System.out.print(" │");
+        System.out.println();
         printRowLine(rowSize);
+
+        for (Map.Entry<String, Integer> entry : numberOfComputersByManufacturer.entrySet()) {
+            System.out.print("│ ");
+            System.out.print(addPadding(entry.getKey(), calculatedManufacturerNameSize));
+            System.out.print(" │ ");
+            System.out.print(addPadding(entry.getValue().toString(), numberOfComputersSize));
+            System.out.print(" │");
+            System.out.println();
+            printRowLine(rowSize);
+        }
     }
 
     void printComputers(List<Computer> computers) {
@@ -65,7 +76,7 @@ public class Printer {
         };
 
         String[] columnLabelsSecondRow = new String[]{
-                "ID",
+                "LP.",
                 "producenta",
                 "ekranu",
                 "ekranu",
@@ -126,10 +137,10 @@ public class Printer {
 
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfColumns; j++) {
-                System.out.print("|");
+                System.out.print("│");
                 System.out.print(addPadding(table[i][j], columnSize[j]));
             }
-            System.out.print("|");
+            System.out.print("│");
             System.out.println();
 
             if (i > 1) {
@@ -141,7 +152,7 @@ public class Printer {
     }
 
     private void printRowLine(int rowSize) {
-        System.out.println("-".repeat(rowSize));
+        System.out.println("─".repeat(rowSize));
     }
 
     private String addPadding(String text, int padding) {

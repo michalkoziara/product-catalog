@@ -9,6 +9,7 @@ public class Main {
 
         Printer printer = new Printer();
         printer.printComputers(computers);
+        System.out.println();
         printer.printManufacturerStatistics(computers);
     }
 }
