@@ -17,9 +17,9 @@ public class FileComputerRepository implements ComputerRepository {
         try (BufferedReader catalogBufferReader = new BufferedReader(new FileReader(CATALOG_ASSET_DIRECTORY))) {
             String catalogLine;
             while ((catalogLine = catalogBufferReader.readLine()) != null) {
-                String[] data = catalogLine.split(";");
+                String[] data = catalogLine.split(";", -1);
 
-                if (data.length == 15) {
+                if (data.length == 16) {
                     ComputerBuilder computerBuilder = new ComputerBuilder();
                     computerBuilder.setManufacturerName(data[0]);
                     computerBuilder.setDiagonalScreenSize(data[1]);

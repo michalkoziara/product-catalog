@@ -1,10 +1,49 @@
 package com.michalkoziara;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Printer {
+
+    void printManufacturerStatistics(List<Computer> computers) {
+        Map<String, Integer> numberOfComputersByManufacturer = new TreeMap<>();
+        int manufacturerNameSize = 0;
+        int numberOfComputersSize = 0;
+
+        for (Computer computer : computers) {
+            String manufacturerName = computer.getManufacturerName();
+            if (!numberOfComputersByManufacturer.containsKey(manufacturerName)) {
+                numberOfComputersByManufacturer.put(manufacturerName, 1);
+            } else {
+                numberOfComputersByManufacturer.replace(
+                        manufacturerName,
+                        numberOfComputersByManufacturer.get(manufacturerName) + 1
+                );
+            }
+
+            manufacturerNameSize = Math.max(manufacturerNameSize, manufacturerName.length());
+            numberOfComputersSize = Math.max(
+                    numberOfComputersSize,
+                    numberOfComputersByManufacturer.get(manufacturerName).toString().length()
+            );
+        }
+
+        final int rowSize = manufacturerNameSize + numberOfComputersSize + 7;
+        final int calculatedManufacturerNameSize = manufacturerNameSize;
+
+        System.out.println("Liczba komputerów poszczególnych producentów:");
+
+        printRowLine(rowSize);
+        for (Map.Entry<String, Integer> entry : numberOfComputersByManufacturer.entrySet()) {
+            System.out.print("| ");
+            System.out.print(addPadding(entry.getKey(), calculatedManufacturerNameSize));
+            System.out.print(" | ");
+            System.out.print(addPadding(entry.getValue().toString(), numberOfComputersSize));
+            System.out.print(" |");
+            System.out.println();
+        }
+        printRowLine(rowSize);
+    }
+
     void printComputers(List<Computer> computers) {
         String[] columnLabelsFirstRow = new String[]{
                 "",
