@@ -1,8 +1,13 @@
 package com.michalkoziara;
 
-public class Main {
+import java.util.List;
 
+public class Main {
     public static void main(String[] args) {
-	// write your code here
+        ComputerRepository computerRepository = new FileComputerRepository();
+        List<Computer> computers = computerRepository.getComputers();
+
+        Printer printer = new Printer();
+        printer.printComputers(computers);
     }
 }
