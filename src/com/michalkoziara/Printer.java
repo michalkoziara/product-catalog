@@ -6,7 +6,7 @@ public class Printer {
 
     void printManufacturerStatistics(List<Computer> computers) {
         final String manufacturerLabel = "Nazwa producenta";
-        final String numberOfComputersLabel = "Liczba komputerów";
+        final String numberOfComputersLabel = "Liczba komputerow";
 
         int manufacturerNameSize = manufacturerLabel.length();
         int numberOfComputersSize = numberOfComputersLabel.length();
@@ -33,23 +33,23 @@ public class Printer {
         final int rowSize = manufacturerNameSize + numberOfComputersSize + 7;
         final int calculatedManufacturerNameSize = manufacturerNameSize;
 
-        System.out.println("Liczba komputerów poszczególnych producentów:");
+        System.out.println("Liczba komputerow poszczegolnych producentow:");
 
         printRowLine(rowSize);
-        System.out.print("│ ");
+        System.out.print("| ");
         System.out.print(addPadding(manufacturerLabel, calculatedManufacturerNameSize));
-        System.out.print(" │ ");
+        System.out.print(" | ");
         System.out.print(addPadding(numberOfComputersLabel, numberOfComputersSize));
-        System.out.print(" │");
+        System.out.print(" |");
         System.out.println();
         printRowLine(rowSize);
 
         for (Map.Entry<String, Integer> entry : numberOfComputersByManufacturer.entrySet()) {
-            System.out.print("│ ");
+            System.out.print("| ");
             System.out.print(addPadding(entry.getKey(), calculatedManufacturerNameSize));
-            System.out.print(" │ ");
+            System.out.print(" | ");
             System.out.print(addPadding(entry.getValue().toString(), numberOfComputersSize));
-            System.out.print(" │");
+            System.out.print(" |");
             System.out.println();
             printRowLine(rowSize);
         }
@@ -137,10 +137,10 @@ public class Printer {
 
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfColumns; j++) {
-                System.out.print("│");
+                System.out.print("|");
                 System.out.print(addPadding(table[i][j], columnSize[j]));
             }
-            System.out.print("│");
+            System.out.print("|");
             System.out.println();
 
             if (i > 1) {
@@ -152,7 +152,7 @@ public class Printer {
     }
 
     private void printRowLine(int rowSize) {
-        System.out.println("─".repeat(rowSize));
+        System.out.println("-".repeat(rowSize));
     }
 
     private String addPadding(String text, int padding) {
