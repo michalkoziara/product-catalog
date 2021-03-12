@@ -1,2 +1,8 @@
 # IDE related files
 /.idea/
+
+# Gradle related files
+/.gradle/
+
+# Compiled resources
+/build/
