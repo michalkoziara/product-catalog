@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 public class ComputerBuilder {
     private String manufacturerName;
     private String diagonalScreenSize;
@@ -14,6 +16,27 @@ public class ComputerBuilder {
     private String gpuMemory;
     private String operatingSystem;
     private String physicalDriveType;
+
+    public ComputerBuilder() {
+    }
+
+    public ComputerBuilder(@NotNull Computer computer) {
+        manufacturerName = computer.getManufacturerName();
+        diagonalScreenSize = computer.getDiagonalScreenSize();
+        screenResolution = computer.getScreenResolution();
+        screenSurfaceType = computer.getScreenSurfaceType();
+        touchscreenFlag = computer.getTouchscreenFlag();
+        cpu = computer.getCpu();
+        numberOfCpuCores = computer.getNumberOfCpuCores();
+        clockFrequency = computer.getClockFrequency();
+        ram = computer.getRam();
+        discSize = computer.getDiscSize();
+        discType = computer.getDiscType();
+        gpu = computer.getGpu();
+        gpuMemory = computer.getGpuMemory();
+        operatingSystem = computer.getOperatingSystem();
+        physicalDriveType = computer.getPhysicalDriveType();
+    }
 
     public Computer createComputer() {
         return new Computer(
