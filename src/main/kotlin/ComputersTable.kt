@@ -92,8 +92,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*\"$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
@@ -107,8 +112,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*x[1-9][0-9]*$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
@@ -172,8 +182,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
@@ -187,8 +202,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
@@ -202,8 +222,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*GB$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
@@ -217,8 +242,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*GB$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
@@ -262,8 +292,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            var isTouchScreenFlagValid = false
+                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*GB$"))) {
+                                isTouchScreenFlagValid = true
+                            }
+
+                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
+                            return isTouchScreenFlagValid
                         },
                         modifier = Modifier.weight(1f),
                     )
