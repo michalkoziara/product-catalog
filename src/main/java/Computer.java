@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class Computer {
     private final String manufacturerName;
     private final String diagonalScreenSize;
@@ -49,8 +52,8 @@ public class Computer {
         this.physicalDriveType = physicalDriveType;
     }
 
-    public String[] getParameters() {
-        return new String[]{
+    public List<String> getParameters() {
+        return Arrays.asList(
                 getManufacturerName(),
                 getDiagonalScreenSize(),
                 getScreenResolution(),
@@ -66,7 +69,11 @@ public class Computer {
                 getGpuMemory(),
                 getOperatingSystem(),
                 getPhysicalDriveType()
-        };
+        );
+    }
+
+    public String toCsv() {
+        return String.join(";", getParameters()) + ";";
     }
 
     public String getManufacturerName() {

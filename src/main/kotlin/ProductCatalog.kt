@@ -12,10 +12,12 @@ import java.util.*
 
 @Composable
 fun ProductCatalog(computerRepository: ComputerRepository) {
+    val validator = Validator()
+
     var computers: List<Computer> by remember { mutableStateOf(emptyList()) }
     val numberOfComputersByManufacturer: Map<String, Int> =
         remember(computers) { computeManufacturerStatistics(computers) }
-    var isSavingAvailable: Boolean by remember { mutableStateOf(true) }
+    val isSavingAvailable: Boolean = remember(computers) { validator.validateComputers(computers) }
 
     Column {
         Row {
@@ -25,31 +27,42 @@ fun ProductCatalog(computerRepository: ComputerRepository) {
                     computers = computerRepository.computers
                 }) {
                 Text(
-                    text = "Wczytaj dane z pliku TXT"
+                    text = "Importuj z pliku"
                 )
             }
             Button(
                 modifier = Modifier.padding(10.dp),
                 enabled = isSavingAvailable,
                 onClick = {
-                    computers = computerRepository.computers
+                    computerRepository.saveComputers(computers)
                 }) {
                 Text(
-                    text = "Zapisz dane do pliku TXT"
+                    text = "Eksportuj do pliku"
                 )
             }
         }
         ComputerTable(
             computers = computers,
-            onComputersChange = { updatedComputers: List<Computer>, isDataValid: Boolean ->
+            onComputersChange = { updatedComputers: List<Computer> ->
                 computers = updatedComputers
-                isSavingAvailable = isDataValid
             },
             modifier = Modifier
                 .padding(all = 10.dp)
                 .weight(1f),
         )
         Row(modifier = Modifier.weight(0.5f)) {
+            Button(
+                modifier = Modifier.padding(10.dp),
+                onClick = {
+                    val changedComputers = computers.toMutableList()
+                    changedComputers.add(ComputerBuilder().createComputer())
+                    computers = changedComputers
+                }) {
+                Text(
+                    text = "Dodaj nowy rekord"
+                )
+            }
+            Spacer(modifier = Modifier.weight(0.6f))
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.weight(0.4f)
@@ -61,7 +74,6 @@ fun ProductCatalog(computerRepository: ComputerRepository) {
                         .padding(all = 10.dp)
                 )
             }
-            Spacer(modifier = Modifier.weight(0.6f))
         }
     }
 }

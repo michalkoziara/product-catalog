@@ -18,6 +18,21 @@ public class ComputerBuilder {
     private String physicalDriveType;
 
     public ComputerBuilder() {
+        manufacturerName = "";
+        diagonalScreenSize = "";
+        screenResolution = "";
+        screenSurfaceType = "";
+        touchscreenFlag = "";
+        cpu = "";
+        numberOfCpuCores = "";
+        clockFrequency = "";
+        ram = "";
+        discSize = "";
+        discType = "";
+        gpu = "";
+        gpuMemory = "";
+        operatingSystem = "";
+        physicalDriveType = "";
     }
 
     public ComputerBuilder(@NotNull Computer computer) {

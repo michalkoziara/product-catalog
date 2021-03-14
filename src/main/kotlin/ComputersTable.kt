@@ -17,13 +17,15 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ComputerTable(
     computers: List<Computer> = emptyList(),
-    onComputersChange: (List<Computer>, Boolean) -> Unit,
+    onComputersChange: (List<Computer>) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val validator = Validator()
+
     val lazyListState = rememberLazyListState()
     val averageItemSize: Float by derivedStateOf {
         val items = lazyListState.layoutInfo.visibleItemsInfo
-        items.sumBy { it.size }.toFloat() / items.size
+        items.sumBy { it.size }.toFloat() / (items.size - 1)
     }
 
     Box(
@@ -69,7 +71,7 @@ fun ComputerTable(
                     )
                     EditableCell(
                         text = computer.manufacturerName,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setManufacturerName(text)
                                 .createComputer()
@@ -77,14 +79,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateManufacturerName(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.diagonalScreenSize,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setDiagonalScreenSize(text)
                                 .createComputer()
@@ -92,19 +94,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*\"$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateDiagonalScreenSize(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.screenResolution,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setScreenResolution(text)
                                 .createComputer()
@@ -112,19 +109,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*x[1-9][0-9]*$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateScreenResolution(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.screenSurfaceType,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setScreenSurfaceType(text)
                                 .createComputer()
@@ -132,14 +124,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.touchscreenFlag,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setTouchscreenFlag(text)
                                 .createComputer()
@@ -147,19 +138,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text == "tak" || text == "nie" || text == "") {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateTouchScreenFlag(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.cpu,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setCpu(text)
                                 .createComputer()
@@ -167,14 +153,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.numberOfCpuCores,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setNumberOfCpuCores(text)
                                 .createComputer()
@@ -182,19 +167,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateNumberOfCpuCores(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.clockFrequency,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setClockFrequency(text)
                                 .createComputer()
@@ -202,19 +182,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateClockFrequency(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.ram,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setRam(text)
                                 .createComputer()
@@ -222,19 +197,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*GB$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateRam(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.discSize,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setDiscSize(text)
                                 .createComputer()
@@ -242,19 +212,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*GB$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateDiscSize(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.discType,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setDiscType(text)
                                 .createComputer()
@@ -262,14 +227,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.gpu,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setGpu(text)
                                 .createComputer()
@@ -277,14 +241,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.gpuMemory,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setGpuMemory(text)
                                 .createComputer()
@@ -292,19 +255,14 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            var isTouchScreenFlagValid = false
-                            if (text.isEmpty() || text.matches(Regex("^[1-9][0-9]*GB$"))) {
-                                isTouchScreenFlagValid = true
-                            }
-
-                            onComputersChange(updatedComputers, isTouchScreenFlagValid)
-                            return isTouchScreenFlagValid
+                            onComputersChange(updatedComputers)
                         },
+                        isValid = validator.validateGpuMemory(computer),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.operatingSystem,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setOperatingSystem(text)
                                 .createComputer()
@@ -312,14 +270,13 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
                         text = computer.physicalDriveType,
-                        onTextChange = fun(text: String): Boolean {
+                        onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setPhysicalDriveType(text)
                                 .createComputer()
@@ -327,8 +284,7 @@ fun ComputerTable(
                             val updatedComputers = computers.toMutableList()
                             updatedComputers[index] = changedComputer
 
-                            onComputersChange(updatedComputers, true)
-                            return true
+                            onComputersChange(updatedComputers)
                         },
                         modifier = Modifier.weight(1f),
                     )

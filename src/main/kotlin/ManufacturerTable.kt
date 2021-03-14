@@ -19,7 +19,7 @@ fun ManufacturerTable(numberOfComputersByManufacturer: Map<String, Int> = emptyM
     val lazyListState = rememberLazyListState()
     val averageItemSize: Float by derivedStateOf {
         val items = lazyListState.layoutInfo.visibleItemsInfo
-        items.sumBy { it.size }.toFloat() / items.size
+        items.sumBy { it.size }.toFloat() / (items.size - 1)
     }
 
     Box(

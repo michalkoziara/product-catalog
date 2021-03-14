@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,5 +42,23 @@ public class FileComputerRepository implements ComputerRepository {
         }
 
         return computers;
+    }
+
+    @Override
+    public boolean saveComputers(List<Computer> computers) {
+        try (BufferedWriter catalogBufferWriter = new BufferedWriter(new FileWriter(CATALOG_ASSET_DIRECTORY))) {
+            for (Computer computer : computers) {
+                catalogBufferWriter.write(computer.toCsv());
+                catalogBufferWriter.newLine();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
     }
 }

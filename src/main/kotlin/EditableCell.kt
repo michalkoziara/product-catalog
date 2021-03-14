@@ -19,11 +19,11 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun EditableCell(
     text: String,
-    onTextChange: (String) -> Boolean,
+    onTextChange: (String) -> Unit,
+    isValid: Boolean = true,
     modifier: Modifier,
 ) {
     var isEditable: Boolean by remember { mutableStateOf(false) }
-    var isDataValid: Boolean by remember { mutableStateOf(true) }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -31,7 +31,7 @@ fun EditableCell(
         modifier = modifier
             .height(height = 60.dp)
             .border(width = 0.5.dp, color = Color(0xDD000000))
-            .background(color = if (isDataValid) Color.White else Color(0xFFff0033))
+            .background(color = if (isValid) Color.White else Color(0xFFff0033))
             .combinedClickable(
                 onClick = {
                     isEditable = !isEditable
@@ -42,7 +42,7 @@ fun EditableCell(
             AutoFocusingText(
                 text,
                 onClick = { isEditable = !isEditable },
-                onTextChange = { isDataValid = onTextChange(it) },
+                onTextChange = onTextChange,
             )
         else
             Text(

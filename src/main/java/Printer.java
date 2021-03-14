@@ -121,7 +121,7 @@ public class Printer {
         int numberOfRows = table.length;
 
         for (int i = 0; i < computers.size(); i++) {
-            ArrayList<String> computerParameters = new ArrayList<>(Arrays.asList(computers.get(i).getParameters()));
+            List<String> computerParameters = computers.get(i).getParameters();
             computerParameters.add(0, String.valueOf(i + 1));
             table[i + 3] = computerParameters.toArray(new String[0]);
         }
