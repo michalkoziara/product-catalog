@@ -29,7 +29,11 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
-            packageName = "product-catalog"
+
+            windows {
+                iconFile.set(project.file("src/main/resources/icon.ico"))
+            }
+            packageName = "Product Catalog"
         }
     }
 }

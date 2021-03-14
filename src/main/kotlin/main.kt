@@ -2,10 +2,16 @@ import androidx.compose.desktop.AppWindow
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
+import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
 import javax.swing.SwingUtilities.invokeLater
 
 fun main() = invokeLater {
-    val window = AppWindow(title = "Integracja Systemów - Michał Koziara")
+    val window = AppWindow(
+        title = "Integracja Systemów - Michał Koziara",
+        icon = getWindowIcon()
+    )
     window.maximize()
     window.show {
         val colors = lightColors(
@@ -22,4 +28,19 @@ fun main() = invokeLater {
             ProductCatalog(computerRepository = FileComputerRepository())
         }
     }
+}
+
+fun getWindowIcon(): BufferedImage {
+    var image: BufferedImage? = null
+    try {
+        image = ImageIO.read(File("./icons/icon.png"))
+    } catch (e: Exception) {
+        print(e.message)
+    }
+
+    if (image == null) {
+        image = BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB)
+    }
+
+    return image
 }
