@@ -28,11 +28,7 @@ fun AutoFocusingText(
             textAlign = TextAlign.Center
         ),
         modifier = modifier.focusRequester(focusRequester)
-            .combinedClickable(
-                onClick = {
-                    onClick()
-                }
-            ),
+            .combinedClickable(onClick = onClick)
     )
 
     DisposableEffect(Unit) {

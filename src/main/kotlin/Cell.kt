@@ -21,10 +21,8 @@ fun Cell(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .height(height = 85.dp)
-            .border(width = 0.5.dp, color = Color(0xDD000000))
-            .background(
-                color = Color(0xFFEEEEEE)
-            )
+            .border(width = 0.5.dp, color = Color(Constants.BLACK_85))
+            .background(color = Color(Constants.GREY))
     ) {
         Text(text, textAlign = TextAlign.Center)
     }

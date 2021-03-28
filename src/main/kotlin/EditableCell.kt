@@ -30,13 +30,9 @@ fun EditableCell(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .height(height = 60.dp)
-            .border(width = 0.5.dp, color = Color(0xDD000000))
-            .background(color = if (isValid) Color.White else Color(0xFFff0033))
-            .combinedClickable(
-                onClick = {
-                    isEditable = !isEditable
-                },
-            )
+            .border(width = 0.5.dp, color = Color(Constants.BLACK_85))
+            .background(color = if (isValid) Color.White else Color(Constants.RED))
+            .combinedClickable(onClick = { isEditable = !isEditable })
     ) {
         if (isEditable)
             AutoFocusingText(

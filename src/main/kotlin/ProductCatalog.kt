@@ -11,7 +11,10 @@ import androidx.compose.ui.unit.dp
 import java.util.*
 
 @Composable
-fun ProductCatalog(computerRepository: ComputerRepository) {
+fun ProductCatalog() {
+    val fileComputerRepository = FileComputerRepository()
+    val xmlComputerRepository = XmlComputerRepository()
+
     val validator = Validator()
 
     var computers: List<Computer> by remember { mutableStateOf(emptyList()) }
@@ -24,20 +27,39 @@ fun ProductCatalog(computerRepository: ComputerRepository) {
             Button(
                 modifier = Modifier.padding(10.dp),
                 onClick = {
-                    computers = computerRepository.computers
+                    computers = fileComputerRepository.computers
                 }) {
                 Text(
-                    text = "Importuj z pliku"
+                    text = Constants.IMPORT_TXT_BUTTON_LABEL
                 )
             }
             Button(
                 modifier = Modifier.padding(10.dp),
                 enabled = isSavingAvailable,
                 onClick = {
-                    computerRepository.saveComputers(computers)
+                    fileComputerRepository.saveComputers(computers)
                 }) {
                 Text(
-                    text = "Eksportuj do pliku"
+                    text = Constants.EXPORT_TXT_BUTTON_LABEL
+                )
+            }
+            Button(
+                modifier = Modifier.padding(10.dp),
+                onClick = {
+                    computers = xmlComputerRepository.computers
+                }) {
+                Text(
+                    text = Constants.IMPORT_XML_BUTTON_LABEL
+                )
+            }
+            Button(
+                modifier = Modifier.padding(10.dp),
+                enabled = isSavingAvailable,
+                onClick = {
+                    xmlComputerRepository.saveComputers(computers)
+                }) {
+                Text(
+                    text = Constants.EXPORT_XML_BUTTON_LABEL
                 )
             }
         }
@@ -59,7 +81,7 @@ fun ProductCatalog(computerRepository: ComputerRepository) {
                     computers = changedComputers
                 }) {
                 Text(
-                    text = "Dodaj nowy rekord"
+                    text = Constants.ADD_RECORD_BUTTON_LABEL
                 )
             }
             Spacer(modifier = Modifier.weight(0.6f))
@@ -67,7 +89,7 @@ fun ProductCatalog(computerRepository: ComputerRepository) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.weight(0.4f)
             ) {
-                Text(text = "Statystyki producentów")
+                Text(text = Constants.STATISTICS_LABEL)
                 ManufacturerTable(
                     numberOfComputersByManufacturer = numberOfComputersByManufacturer,
                     modifier = Modifier

@@ -33,8 +33,8 @@ class Validator {
 
     fun validateTouchScreenFlag(computer: Computer): Boolean {
         return computer.touchscreenFlag.isBlank()
-                || computer.touchscreenFlag == "tak"
-                || computer.touchscreenFlag == "nie"
+                || computer.touchscreenFlag == Constants.YES
+                || computer.touchscreenFlag == Constants.NO
     }
 
     fun validateNumberOfCpuCores(computer: Computer): Boolean {

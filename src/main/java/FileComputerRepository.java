@@ -3,13 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileComputerRepository implements ComputerRepository {
-    private static final String CATALOG_ASSET_DIRECTORY = "./resources/katalog.txt";
 
     @Override
     public List<Computer> getComputers() {
         List<Computer> computers = new ArrayList<>();
 
-        try (BufferedReader catalogBufferReader = new BufferedReader(new FileReader(CATALOG_ASSET_DIRECTORY))) {
+        try (BufferedReader catalogBufferReader = new BufferedReader(new FileReader(Constants.CATALOG_TXT_ASSET_PATH))) {
             String catalogLine;
             while ((catalogLine = catalogBufferReader.readLine()) != null) {
                 String[] data = catalogLine.split(";", -1);
@@ -35,8 +34,6 @@ public class FileComputerRepository implements ComputerRepository {
                     computers.add(computerBuilder.createComputer());
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,14 +43,11 @@ public class FileComputerRepository implements ComputerRepository {
 
     @Override
     public boolean saveComputers(List<Computer> computers) {
-        try (BufferedWriter catalogBufferWriter = new BufferedWriter(new FileWriter(CATALOG_ASSET_DIRECTORY))) {
+        try (BufferedWriter catalogBufferWriter = new BufferedWriter(new FileWriter(Constants.CATALOG_TXT_ASSET_PATH))) {
             for (Computer computer : computers) {
                 catalogBufferWriter.write(computer.toCsv());
                 catalogBufferWriter.newLine();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return false;
         } catch (IOException e) {
             e.printStackTrace();
             return false;

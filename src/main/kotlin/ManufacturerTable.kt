@@ -52,7 +52,7 @@ fun ManufacturerTable(numberOfComputersByManufacturer: Map<String, Int> = emptyM
             state = lazyListState,
             modifier = Modifier.fillMaxSize()
                 .padding(end = 10.dp)
-                .border(width = 1.dp, color = Color(0xDD000000)),
+                .border(width = 1.dp, color = Color(Constants.BLACK_85)),
         ) {
             stickyHeader {
                 ManufacturerHeader()
@@ -77,8 +77,8 @@ fun ManufacturerTable(numberOfComputersByManufacturer: Map<String, Int> = emptyM
 fun ManufacturerHeader(modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
         listOf(
-            "Nazwa producenta",
-            "Liczba komputerów",
+            Constants.MANUFACTURER_NAME_LABEL,
+            Constants.NUMBER_OF_COMPUTERS_LABEL,
         ).forEach { label -> Cell(text = label, modifier = Modifier.weight(1f).height(40.dp)) }
     }
 }

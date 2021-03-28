@@ -58,7 +58,7 @@ fun ComputerTable(
             state = lazyListState,
             modifier = Modifier.fillMaxSize()
                 .padding(end = 10.dp)
-                .border(width = 1.dp, color = Color(0xDD000000)),
+                .border(width = 1.dp, color = Color(Constants.BLACK_85)),
         ) {
             stickyHeader {
                 Header()
@@ -297,23 +297,23 @@ fun ComputerTable(
 @Composable
 fun Header(modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
-        Cell(modifier = Modifier.weight(0.5f), text = "LP.")
+        Cell(modifier = Modifier.weight(0.5f), text = Constants.ORDINAL_NUMBER_LABEL)
         listOf(
-            "Nazwa producenta",
-            "Przekątna ekranu",
-            "Rozdzielczość ekranu",
-            "Rodzaj powierzchni ekranu",
-            "Czy ekran jest dotykowy",
-            "Nazwa procesora",
-            "Liczba rdzeni fizycznych",
-            "Prędkość taktowania MHz",
-            "Wielkość pamięci RAM",
-            "Pojemność dysku",
-            "Rodzaj dysku",
-            "Nazwa układu graficznego",
-            "Pamięć układu graficznego",
-            "Nazwa systemu operacyjnego",
-            "Rodzaj napędu fizycznego w komputerze "
+            Constants.MANUFACTURER_NAME_LABEL,
+            Constants.DIAGONAL_SCREEN_SIZE_LABEL,
+            Constants.SCREEN_RESOLUTION_LABEL,
+            Constants.SCREEN_SURFACE_TYPE_LABEL,
+            Constants.TOUCHSCREEN_FLAG_LABEL,
+            Constants.CPU_LABEL,
+            Constants.NUMBER_OF_CPU_CORES_LABEL,
+            Constants.CLOCK_FREQUENCY_LABEL,
+            Constants.RAM_LABEL,
+            Constants.DISC_SIZE_LABEL,
+            Constants.DISC_TYPE_LABEL,
+            Constants.GPU_LABEL,
+            Constants.GPU_MEMORY_LABEL,
+            Constants.OPERATING_SYSTEM_LABEL,
+            Constants.PHYSICAL_DRIVE_TYPE_LABEL,
         ).forEach { label -> Cell(modifier = Modifier.weight(1f), text = label) }
     }
 }

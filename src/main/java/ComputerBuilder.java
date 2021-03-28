@@ -1,5 +1,7 @@
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
+
 public class ComputerBuilder {
     private String manufacturerName;
     private String diagonalScreenSize;
@@ -71,6 +73,70 @@ public class ComputerBuilder {
                 operatingSystem,
                 physicalDriveType
         );
+    }
+
+    public ComputerBuilder fromMap(Map<String, String> parameters) {
+        if (parameters.containsKey("[manufacturer]")) {
+            manufacturerName = parameters.get("[manufacturer]");
+        }
+
+        if (parameters.containsKey("[screen, size]")) {
+            diagonalScreenSize = parameters.get("[screen, size]");
+        }
+
+        if (parameters.containsKey("[screen, resolution]")) {
+            screenResolution = parameters.get("[screen, resolution]");
+        }
+
+        if (parameters.containsKey("[screen, type]")) {
+            screenSurfaceType = parameters.get("[screen, type]");
+        }
+
+        if (parameters.containsKey("[screen]")) {
+            touchscreenFlag = parameters.get("[screen]");
+        }
+
+        if (parameters.containsKey("[processor, name]")) {
+            cpu = parameters.get("[processor, name]");
+        }
+
+        if (parameters.containsKey("[processor, physical_cores]")) {
+            numberOfCpuCores = parameters.get("[processor, physical_cores]");
+        }
+
+        if (parameters.containsKey("[processor, clock_speed]")) {
+            clockFrequency = parameters.get("[processor, clock_speed]");
+        }
+
+        if (parameters.containsKey("[ram]")) {
+            ram = parameters.get("[ram]");
+        }
+
+        if (parameters.containsKey("[disc, storage]")) {
+            discSize = parameters.get("[disc, storage]");
+        }
+
+        if (parameters.containsKey("[disc]")) {
+            discType = parameters.get("[disc]");
+        }
+
+        if (parameters.containsKey("[graphic_card, name]")) {
+            gpu = parameters.get("[graphic_card, name]");
+        }
+
+        if (parameters.containsKey("[graphic_card, memory]")) {
+            gpuMemory = parameters.get("[graphic_card, memory]");
+        }
+
+        if (parameters.containsKey("[os]")) {
+            operatingSystem = parameters.get("[os]");
+        }
+
+        if (parameters.containsKey("[disc_reader]")) {
+            physicalDriveType = parameters.get("[disc_reader]");
+        }
+
+        return this;
     }
 
     public ComputerBuilder setManufacturerName(String manufacturerName) {
