@@ -74,6 +74,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setManufacturerName(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -81,7 +82,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateManufacturerName(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateManufacturerName(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -89,6 +94,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setDiagonalScreenSize(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -96,7 +102,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateDiagonalScreenSize(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateDiagonalScreenSize(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -104,6 +114,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setScreenResolution(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -111,7 +122,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateScreenResolution(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateScreenResolution(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -119,6 +134,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setScreenSurfaceType(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -126,6 +142,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = true,
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -133,6 +154,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setTouchscreenFlag(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -140,7 +162,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateTouchScreenFlag(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateTouchScreenFlag(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -148,6 +174,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setCpu(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -155,6 +182,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = true,
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -162,6 +194,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setNumberOfCpuCores(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -169,7 +202,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateNumberOfCpuCores(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateNumberOfCpuCores(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -177,6 +214,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setClockFrequency(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -184,7 +222,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateClockFrequency(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateClockFrequency(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -192,6 +234,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setRam(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -199,7 +242,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateRam(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateRam(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -207,6 +254,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setDiscSize(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -214,7 +262,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateDiscSize(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateDiscSize(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -222,6 +274,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setDiscType(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -229,6 +282,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = true,
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -236,6 +294,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setGpu(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -243,6 +302,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = true,
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -250,6 +314,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setGpuMemory(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -257,7 +322,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
-                        isValid = validator.validateGpuMemory(computer),
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = validator.validateGpuMemory(computer),
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -265,6 +334,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setOperatingSystem(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -272,6 +342,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = true,
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                     EditableCell(
@@ -279,6 +354,7 @@ fun ComputerTable(
                         onTextChange = fun(text: String) {
                             val changedComputer = ComputerBuilder(computer)
                                 .setPhysicalDriveType(text)
+                                .setChanged(true)
                                 .createComputer()
 
                             val updatedComputers = computers.toMutableList()
@@ -286,6 +362,11 @@ fun ComputerTable(
 
                             onComputersChange(updatedComputers)
                         },
+                        backgroundColor = getCellBackgroundColor(
+                            isValid = true,
+                            isChanged = computer.isChanged,
+                            isDuplicate = computer.isDuplicate,
+                        ),
                         modifier = Modifier.weight(1f),
                     )
                 }
@@ -316,4 +397,26 @@ fun Header(modifier: Modifier = Modifier) {
             Constants.PHYSICAL_DRIVE_TYPE_LABEL,
         ).forEach { label -> Cell(modifier = Modifier.weight(1f), text = label) }
     }
+}
+
+fun getCellBackgroundColor(
+    isValid: Boolean,
+    isDuplicate: Boolean,
+    isChanged: Boolean,
+): Color {
+    var backgroundColor = Color(Constants.GREY)
+
+    if (isDuplicate) {
+        backgroundColor = Color(Constants.LIGHT_RED)
+    }
+
+    if (isChanged) {
+        backgroundColor = Color.White
+    }
+
+    if (!isValid) {
+        backgroundColor = Color(Constants.DARK_RED)
+    }
+
+    return backgroundColor
 }

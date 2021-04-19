@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 fun EditableCell(
     text: String,
     onTextChange: (String) -> Unit,
-    isValid: Boolean = true,
+    backgroundColor: Color,
     modifier: Modifier,
 ) {
     var isEditable: Boolean by remember { mutableStateOf(false) }
@@ -31,7 +31,7 @@ fun EditableCell(
         modifier = modifier
             .height(height = 60.dp)
             .border(width = 0.5.dp, color = Color(Constants.BLACK_85))
-            .background(color = if (isValid) Color.White else Color(Constants.RED))
+            .background(color = backgroundColor)
             .combinedClickable(onClick = { isEditable = !isEditable })
     ) {
         if (isEditable)

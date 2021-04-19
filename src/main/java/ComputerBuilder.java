@@ -19,6 +19,9 @@ public class ComputerBuilder {
     private String operatingSystem;
     private String physicalDriveType;
 
+    private boolean isChanged;
+    private boolean isDuplicate;
+
     public ComputerBuilder() {
         manufacturerName = "";
         diagonalScreenSize = "";
@@ -35,6 +38,9 @@ public class ComputerBuilder {
         gpuMemory = "";
         operatingSystem = "";
         physicalDriveType = "";
+
+        isChanged = false;
+        isDuplicate = false;
     }
 
     public ComputerBuilder(@NotNull Computer computer) {
@@ -53,6 +59,9 @@ public class ComputerBuilder {
         gpuMemory = computer.getGpuMemory();
         operatingSystem = computer.getOperatingSystem();
         physicalDriveType = computer.getPhysicalDriveType();
+
+        isChanged = computer.isChanged();
+        isDuplicate = computer.isDuplicate();
     }
 
     public Computer createComputer() {
@@ -71,7 +80,9 @@ public class ComputerBuilder {
                 gpu,
                 gpuMemory,
                 operatingSystem,
-                physicalDriveType
+                physicalDriveType,
+                isChanged,
+                isDuplicate
         );
     }
 
@@ -211,6 +222,16 @@ public class ComputerBuilder {
 
     public ComputerBuilder setPhysicalDriveType(String physicalDriveType) {
         this.physicalDriveType = physicalDriveType;
+        return this;
+    }
+
+    public ComputerBuilder setChanged(boolean changed) {
+        isChanged = changed;
+        return this;
+    }
+
+    public ComputerBuilder setDuplicate(boolean duplicate) {
+        isDuplicate = duplicate;
         return this;
     }
 }

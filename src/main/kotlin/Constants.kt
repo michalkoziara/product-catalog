@@ -11,7 +11,8 @@ object Constants {
     const val YELLOW = 0xFFFFC107
     const val GREY = 0xFFEEEEEE
     const val BLACK_85 = 0xDD000000
-    const val RED = 0xFFFF0033
+    const val DARK_RED = 0xFFFF0033
+    const val LIGHT_RED = 0xFFFFCCCC
 
     /**** LABELS ****/
     const val WINDOW_TITLE = "Integracja Systemów"
@@ -20,6 +21,8 @@ object Constants {
     const val EXPORT_TXT_BUTTON_LABEL = "Eksportuj dane do TXT"
     const val IMPORT_XML_BUTTON_LABEL = "Importuj dane z XML"
     const val EXPORT_XML_BUTTON_LABEL = "Eksportuj dane z XML"
+    const val IMPORT_DATABASE_BUTTON_LABEL = "Importuj dane z bazy danych"
+    const val EXPORT_DATABASE_BUTTON_LABEL = "Eksportuj dane z bazy danych"
 
     const val ORDINAL_NUMBER_LABEL = "LP."
     const val MANUFACTURER_NAME_LABEL = "Nazwa producenta"
@@ -42,6 +45,14 @@ object Constants {
 
     const val STATISTICS_LABEL = "Statystyki producentów"
     const val NUMBER_OF_COMPUTERS_LABEL = "Liczba komputerów"
+
+    const val DATA_IMPORT_SOURCE_LABEL = "Wczytano dane z %s"
+    const val NUMBER_OF_NEW_RECORDS_LABEL = "Liczba nowych rekordów: %d"
+    const val NUMBER_OF_DUPLICATED_RECORDS_LABEL = "Liczba duplikatów: %d"
+
+    const val TXT_SOURCE_LABEL = "pliku TXT"
+    const val XML_SOURCE_LABEL = "pliku XML"
+    const val DATABASE_SOURCE_LABEL = "bazy danych"
 
     const val YES = "tak"
     const val NO = "nie"

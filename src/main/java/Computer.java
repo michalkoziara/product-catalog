@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Computer {
     private final String manufacturerName;
@@ -18,6 +19,9 @@ public class Computer {
     private final String operatingSystem;
     private final String physicalDriveType;
 
+    private boolean isChanged;
+    private boolean isDuplicate;
+
     public Computer(
             String manufacturerName,
             String diagonalScreenSize,
@@ -33,7 +37,9 @@ public class Computer {
             String gpu,
             String gpuMemory,
             String operatingSystem,
-            String physicalDriveType) {
+            String physicalDriveType,
+            boolean isChanged,
+            boolean isDuplicate) {
 
         this.manufacturerName = manufacturerName;
         this.diagonalScreenSize = diagonalScreenSize;
@@ -50,6 +56,38 @@ public class Computer {
         this.gpuMemory = gpuMemory;
         this.operatingSystem = operatingSystem;
         this.physicalDriveType = physicalDriveType;
+
+        this.isChanged = isChanged;
+        this.isDuplicate = isDuplicate;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj instanceof Computer) {
+            Computer otherComputer = (Computer) obj;
+
+            return Objects.equals(this.manufacturerName, otherComputer.manufacturerName)
+                    && Objects.equals(this.diagonalScreenSize, otherComputer.diagonalScreenSize)
+                    && Objects.equals(this.screenResolution, otherComputer.screenResolution)
+                    && Objects.equals(this.screenSurfaceType, otherComputer.screenSurfaceType)
+                    && Objects.equals(this.touchscreenFlag, otherComputer.touchscreenFlag)
+                    && Objects.equals(this.cpu, otherComputer.cpu)
+                    && Objects.equals(this.numberOfCpuCores, otherComputer.numberOfCpuCores)
+                    && Objects.equals(this.clockFrequency, otherComputer.clockFrequency)
+                    && Objects.equals(this.ram, otherComputer.ram)
+                    && Objects.equals(this.discSize, otherComputer.discSize)
+                    && Objects.equals(this.discType, otherComputer.discType)
+                    && Objects.equals(this.gpu, otherComputer.gpu)
+                    && Objects.equals(this.gpuMemory, otherComputer.gpuMemory)
+                    && Objects.equals(this.operatingSystem, otherComputer.operatingSystem)
+                    && Objects.equals(this.physicalDriveType, otherComputer.physicalDriveType);
+        }
+
+        return false;
     }
 
     public List<String> getParameters() {
@@ -134,5 +172,21 @@ public class Computer {
 
     public String getPhysicalDriveType() {
         return physicalDriveType;
+    }
+
+    public boolean isChanged() {
+        return isChanged;
+    }
+
+    public boolean isDuplicate() {
+        return isDuplicate;
+    }
+
+    public void setChanged(boolean changed) {
+        isChanged = changed;
+    }
+
+    public void setDuplicate(boolean duplicate) {
+        isDuplicate = duplicate;
     }
 }
