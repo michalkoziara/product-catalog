@@ -1,0 +1,59 @@
+CREATE TABLE IF NOT EXISTS Computers (
+    computerId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    manufacturerName TEXT,
+    diagonalScreenSize TEXT,
+    screenResolution TEXT,
+    screenSurfaceType TEXT,
+    touchscreenFlag TEXT,
+    cpu TEXT,
+    numberOfCpuCores INTEGER,
+    clockFrequency INTEGER,
+    ram TEXT,
+    discSize TEXT,
+    discType TEXT,
+    gpu TEXT,
+    gpuMemory TEXT,
+    operatingSystem TEXT,
+    physicalDriveType TEXT
+);
+
+insertComputers:
+INSERT INTO Computers(
+        manufacturerName,
+        diagonalScreenSize,
+        screenResolution,
+        screenSurfaceType,
+        touchscreenFlag,
+        cpu,
+        numberOfCpuCores,
+        clockFrequency,
+        ram,
+        discSize,
+        discType,
+        gpu,
+        gpuMemory,
+        operatingSystem,
+        physicalDriveType
+    )
+VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectAllComputers:
+SELECT manufacturerName,
+        diagonalScreenSize,
+        screenResolution,
+        screenSurfaceType,
+        touchscreenFlag,
+        cpu,
+        numberOfCpuCores,
+        clockFrequency,
+        ram,
+        discSize,
+        discType,
+        gpu,
+        gpuMemory,
+        operatingSystem,
+        physicalDriveType
+    FROM Computers;
+
+deleteAllComputers:
+DELETE FROM Computers;
