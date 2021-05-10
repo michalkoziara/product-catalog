@@ -1,26 +1,36 @@
+package data;
+
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@XmlRootElement(name = "computer")
 public class Computer {
-    private final String manufacturerName;
-    private final String diagonalScreenSize;
-    private final String screenResolution;
-    private final String screenSurfaceType;
-    private final String touchscreenFlag;
-    private final String cpu;
-    private final String numberOfCpuCores;
-    private final String clockFrequency;
-    private final String ram;
-    private final String discSize;
-    private final String discType;
-    private final String gpu;
-    private final String gpuMemory;
-    private final String operatingSystem;
-    private final String physicalDriveType;
+    private String manufacturerName;
+    private String diagonalScreenSize;
+    private String screenResolution;
+    private String screenSurfaceType;
+    private String touchscreenFlag;
+    private String cpu;
+    private String numberOfCpuCores;
+    private String clockFrequency;
+    private String ram;
+    private String discSize;
+    private String discType;
+    private String gpu;
+    private String gpuMemory;
+    private String operatingSystem;
+    private String physicalDriveType;
 
     private boolean isChanged;
     private boolean isDuplicate;
+
+    public Computer() {
+    }
 
     public Computer(
             String manufacturerName,
@@ -114,70 +124,87 @@ public class Computer {
         return String.join(";", getParameters()) + ";";
     }
 
+    @XmlElement
     public String getManufacturerName() {
         return manufacturerName;
     }
 
+    @XmlElement
     public String getDiagonalScreenSize() {
         return diagonalScreenSize;
     }
 
+    @XmlElement
     public String getScreenResolution() {
         return screenResolution;
     }
 
+    @XmlElement
     public String getScreenSurfaceType() {
         return screenSurfaceType;
     }
 
+    @XmlElement
     public String getTouchscreenFlag() {
         return touchscreenFlag;
     }
 
+    @XmlElement
     public String getCpu() {
         return cpu;
     }
 
+    @XmlElement
     public String getNumberOfCpuCores() {
         return numberOfCpuCores;
     }
 
+    @XmlElement
     public String getClockFrequency() {
         return clockFrequency;
     }
 
+    @XmlElement
     public String getRam() {
         return ram;
     }
 
+    @XmlElement
     public String getDiscSize() {
         return discSize;
     }
 
+    @XmlElement
     public String getDiscType() {
         return discType;
     }
 
+    @XmlElement
     public String getGpu() {
         return gpu;
     }
 
+    @XmlElement
     public String getGpuMemory() {
         return gpuMemory;
     }
 
+    @XmlElement
     public String getOperatingSystem() {
         return operatingSystem;
     }
 
+    @XmlElement
     public String getPhysicalDriveType() {
         return physicalDriveType;
     }
 
+    @XmlTransient
     public boolean isChanged() {
         return isChanged;
     }
 
+    @XmlTransient
     public boolean isDuplicate() {
         return isDuplicate;
     }

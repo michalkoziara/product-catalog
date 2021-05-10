@@ -1,4 +1,12 @@
+package util
+
 object Constants {
+
+    /**** WEB SERVICE ADDRESS ****/
+    const val PROTOCOL = "http"
+    const val HOST = "localhost"
+    const val PORT = "8081"
+    const val ENDPOINT = "ws/product-service"
 
     /**** RESOURCES ****/
     const val ICON_PATH = "./icons/icon.png"

@@ -1,3 +1,5 @@
+package ui
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -7,13 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import data.Computer
+import data.DatabaseComputerRepository
+import data.FileComputerRepository
+import data.XmlComputerRepository
+import util.Constants
+import util.DataSource
+import util.Validator
 import java.util.*
 
 @Composable
 fun ProductCatalog() {
-    val fileComputerRepository = FileComputerRepository()
-    val xmlComputerRepository = XmlComputerRepository()
-    val databaseComputerRepository = DatabaseComputerRepository()
+    val fileComputerRepository = FileComputerRepository.getInstance()
+    val xmlComputerRepository = XmlComputerRepository.getInstance()
+    val databaseComputerRepository = DatabaseComputerRepository.getInstance()
 
     var dataSource: DataSource by remember { mutableStateOf(DataSource.NULL) }
     val dataSourceLabel: String = remember(dataSource) { getDataSourceLabel(dataSource) }
@@ -159,7 +168,7 @@ fun ProductCatalog() {
                 modifier = Modifier.padding(10.dp),
                 onClick = {
                     val changedComputers = computers.toMutableList()
-                    changedComputers.add(ComputerBuilder().createComputer())
+                    changedComputers.add(Computer())
                     computers = changedComputers
                 }) {
                 Text(

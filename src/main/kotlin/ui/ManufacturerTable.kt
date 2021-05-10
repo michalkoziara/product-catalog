@@ -1,3 +1,5 @@
+package ui
+
 import androidx.compose.desktop.DesktopTheme
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -12,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import util.Constants
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

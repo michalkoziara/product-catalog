@@ -1,8 +1,24 @@
+package data;
+
+import util.Constants;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileComputerRepository implements ComputerRepository {
+    private static FileComputerRepository instance;
+
+    private FileComputerRepository() {
+    }
+
+    public static FileComputerRepository getInstance() {
+        if (instance == null) {
+            instance = new FileComputerRepository();
+        }
+
+        return instance;
+    }
 
     @Override
     public List<Computer> getComputers() {

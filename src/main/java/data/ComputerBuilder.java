@@ -1,3 +1,5 @@
+package data;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;

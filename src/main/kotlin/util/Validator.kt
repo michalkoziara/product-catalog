@@ -1,3 +1,7 @@
+package util
+
+import data.Computer
+
 class Validator {
     fun validateComputers(computers: List<Computer>): Boolean {
         for (computer: Computer in computers) {

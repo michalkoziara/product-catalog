@@ -1,3 +1,5 @@
+package data
+
 import com.squareup.sqldelight.db.SqlDriver
 import database.ProductDatabase
 

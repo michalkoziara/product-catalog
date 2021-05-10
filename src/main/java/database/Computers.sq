@@ -37,7 +37,7 @@ INSERT INTO Computers(
     )
 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
-selectAllComputers:
+selectComputers:
 SELECT manufacturerName,
         diagonalScreenSize,
         screenResolution,
@@ -55,5 +55,29 @@ SELECT manufacturerName,
         physicalDriveType
     FROM Computers;
 
-deleteAllComputers:
+deleteComputers:
 DELETE FROM Computers;
+
+countComputersByManufacturerName:
+SELECT COUNT(*)
+    FROM Computers
+    WHERE (manufacturerName = :manufacturerName);
+
+selectComputersByScreenSurfaceType:
+SELECT manufacturerName,
+        diagonalScreenSize,
+        screenResolution,
+        screenSurfaceType,
+        touchscreenFlag,
+        cpu,
+        numberOfCpuCores,
+        clockFrequency,
+        ram,
+        discSize,
+        discType,
+        gpu,
+        gpuMemory,
+        operatingSystem,
+        physicalDriveType
+    FROM Computers
+    WHERE (screenSurfaceType = :screenSurfaceType);

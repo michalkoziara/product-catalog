@@ -1,5 +1,8 @@
+package data;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import util.Constants;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,6 +25,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class XmlComputerRepository implements ComputerRepository {
+    private static XmlComputerRepository instance;
+
+    private XmlComputerRepository() {
+    }
+
+    public static XmlComputerRepository getInstance() {
+        if (instance == null) {
+            instance = new XmlComputerRepository();
+        }
+
+        return instance;
+    }
+
     @Override
     public List<Computer> getComputers() {
         List<Computer> computers = new ArrayList<>();
