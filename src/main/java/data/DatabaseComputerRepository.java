@@ -136,4 +136,8 @@ public class DatabaseComputerRepository implements ComputerRepository {
 
         return computers;
     }
+
+    public long countComputersByScreenSurfaceType(String manufacturerName) {
+        return computersQueries.countComputersByManufacturerName(manufacturerName).executeAsOne();
+    }
 }

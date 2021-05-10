@@ -16,11 +16,11 @@ public interface ProductSoapService {
     String[] getScreenSurfaceTypes();
 
     @WebMethod
-    int getNumberOfComputersByManufacturerName(@WebParam(name = "manufacturerName") String manufacturerName);
+    long getNumberOfComputersByManufacturerName(@WebParam(name = "manufacturerName") String manufacturerName);
 
     @WebMethod
     Computer[] getComputersByScreenSurfaceType(@WebParam(name = "screenSurfaceType") String screenSurfaceType);
 
     @WebMethod
-    int getNumberOfComputersByDiagonalScreenSize(@WebParam(name = "diagonalScreenSize") String diagonalScreenSize);
+    long getNumberOfComputersByDisplayAspectRatio(@WebParam(name = "displayAspectRatio") String displayAspectRatio);
 }
