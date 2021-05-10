@@ -4,7 +4,6 @@ import androidx.compose.desktop.AppWindow
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
-import com.intellij.util.ui.ImageUtil.createImage
 import util.Constants
 import java.awt.image.BufferedImage
 import java.io.File
@@ -41,7 +40,7 @@ fun getWindowIcon(): BufferedImage {
     }
 
     if (image == null) {
-        image = createImage(1, 1, BufferedImage.TYPE_INT_RGB)
+        image = BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB)
     }
 
     return image

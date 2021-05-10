@@ -5,7 +5,7 @@ object Constants {
     /**** WEB SERVICE ADDRESS ****/
     const val PROTOCOL = "http"
     const val HOST = "localhost"
-    const val PORT = "8081"
+    const val PORT = "8080"
     const val ENDPOINT = "ws/product-service"
 
     /**** RESOURCES ****/
@@ -23,7 +23,7 @@ object Constants {
     const val LIGHT_RED = 0xFFFFCCCC
 
     /**** LABELS ****/
-    const val WINDOW_TITLE = "Integracja Systemów"
+    const val WINDOW_TITLE = "Katalog produktów - Admin"
 
     const val IMPORT_TXT_BUTTON_LABEL = "Importuj dane z TXT"
     const val EXPORT_TXT_BUTTON_LABEL = "Eksportuj dane do TXT"
